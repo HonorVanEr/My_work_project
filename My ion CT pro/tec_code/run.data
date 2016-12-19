@@ -1,0 +1,34 @@
+#! /bin/csh -f
+# Created by plot_hodo on 11-Jun-2014 16:11:31
+
+gmtset BASEMAP_TYPE PLAIN
+gmtset DEGREE_FORMAT 5
+gmtset ANOT_FONT_SIZE 12
+gmtset LABEL_FONT_SIZE 14
+gmtset HEADER_FONT_SIZE 16
+
+set lim = `minmax llh_data.dat -C`
+set ncolor = `echo $lim[5] $lim[6] 200 | awk '{print ($2-$1)/$3}'`
+makecpt -T$lim[5]/3.5e15/$ncolor -Z >! color.cpt
+set R = -R-85.0/-63.0/17.5/35.0
+set S = -JM4i
+set title = data
+pscoast $R $S -B1a4:.$title":WNse" -N1/1ta -W1/0 -P -K -Y5 >! data.ps
+psxy llh_data.dat $R $S -: -Sc0.02 -Ccolor.cpt -O -K >> data.ps
+pstext << eof $R $S -W0 -O -K >> data.ps
+-75.462800 20.626098 8 0 1 CM start
+-82.194268 28.954096 8 0 1 CM end
+eof
+
+set lim = `minmax dth_data.dat -C`
+set ncolor = `echo $lim[5] $lim[6] 200 | awk '{print ($2-$1)/$3}'`
+makecpt -T$lim[5]/3.5e15/$ncolor -Z >! color.cpt
+set R = `minmax dth_data.dat -I10/1`
+set S = -JX4i/4i
+psxy dth_data.dat $R $S -Ba400f50:"Distance (km)":/a1f0.2:"Time (hour UT)":nSWe -Sc0.02 -Ccolor.cpt -O -Y-4.5 >> data.ps
+pstext << eof $R $S -W0 -O -K >> data.ps
+1002871.195516 16.550000 8 0 1 CM start
+167363.580735 20.925000 8 0 1 CM end
+eof
+
+pstoimg data.ps -antialias -crop a -density 150 -out data.png -quiet -type png

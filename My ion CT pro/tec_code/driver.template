@@ -1,0 +1,32 @@
+STS-125     `       % comment
+18                   % time of event (hours UT)
+28.35                % latitude of event 
+-80.62                 % longitude of event
+17.5 35            % latitude range for SIP map
+-85 -63             % longitude range for SIP map 
+16.5 21                % time window  
+30                  % sampling interval ²ÉÑù¼ä¸ô
+05112009            % date
+10                  % elevation cutoff
+7.9                 % magnitude
+0.0                 % depth
+281000              % alt_ion = ionospheric height (meters)
+58.264             % magnetic inclination at alt_ion (degres) [www.geomag.bgs.ac.uk]
+-14.229              % magnetic declination at alt_ion (degres) [www.geomag.bgs.ac.uk]
+5000                % maximum distance from source to consider (km)
+50                  % step for distance to source (km)
+y                   % filter data
+b                   % filter type
+2.2 8               % filter limit (mHz)
+n                   % make hodo % .....
+y                   % reorganize prn
+n                   % compute tec%.......
+y                   % save as mat
+y                   % save prn as mat
+y                   % clean data
+n                   % correct IFB %.............
+n		    % write TECfile
+CODG1310.09I  % ionex file
+epgga9.131    % ephemerides file
+igs15311.sp3  % orbit file
+nas01310.09o  % data file

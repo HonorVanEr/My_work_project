@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- JNLP File for MIDL Application --> 
+<jnlp 
+  spec="1.0+" 
+  codebase="http://sd-www.jhuapl.edu/MIDL" 
+  href="docs/geotail.jnlp"> 
+  <information> 
+    <title>MIDL Data Viewer</title> 
+    <vendor>JHU Applied Physics Lab</vendor> 
+    <homepage href="http://sd-www.jhuapl.edu/MIDL/index.html" /> 
+    <description>MIDL Data Viewer</description> 
+    <description kind="short">MIDL Data Viewing Application for browsing different mission datasets.</description> 
+    <icon href="images/midl_icon_64.jpg" />
+    <icon href="images/midl_logo_splash.jpg" kind="splash" />
+    <offline-allowed />
+  </information> 
+  <security> <all-permissions /> </security>
+  <resources os="Mac OS X">
+    <j2se version="1.4+" initial-heap-size="64M" max-heap-size="600M" />
+  </resources>
+  <resources>
+    <j2se version="1.4.2+" href="http://java.sun.com/products/autodl/j2se" initial-heap-size="64M" max-heap-size="600M" />
+  </resources>
+  <resources> 
+    <jar href="analysis/jars/midl2.jar" />
+    <jar href="analysis/jars/jh_unsigned.jar" />
+    <jar href="analysis/jars/commons-net-1.4.0.jar" />
+    <jar href="analysis/jars/jdom.jar" />
+    <jar href="analysis/jars/derby_10.1.1.0.jar"/>
+  </resources> 
+  <application-desc main-class="midltools.plotapp.Launcher2"> 
+    <argument>http://sd-www.jhuapl.edu/MIDL/analysis/data/midl2_mission_list.xml</argument> 
+    <argument>Geotail</argument> 
+  </application-desc>
+</jnlp>

@@ -1,0 +1,227 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ion_CT_2D</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-10-25"><meta name="DC.source" content="ion_CT_2D.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">set up initial parameter</a></li><li><a href="#2">begin run</a></li></ul></div><h2>set up initial parameter<a name="1"></a></h2><pre class="codeinput">clc
+clear <span class="string">all</span>
+close <span class="string">all</span>
+L=2080; <span class="comment">%&#30005;&#23376;&#23494;&#24230;&#32593;&#26684;&#25968;&#37327;</span>
+I=1200; <span class="comment">%&#23556;&#32447;&#25968;&#37327;</span>
+lmt=1;  <span class="comment">%&#26494;&#24347;&#22240;&#23376;</span>
+
+
+
+load(<span class="string">'xishu.mat'</span>);
+B=LMN;
+B=B*1000;  <span class="comment">%&#20844;&#37324;</span>
+load(<span class="string">'Ne2.mat'</span>);<span class="comment">% &#30005;&#31163;&#23618;&#32463;&#39564;&#27169;&#22411;</span>
+load(<span class="string">'Ne22.mat'</span>);<span class="comment">%&#21152;&#19978;&#25200;&#21160;&#30340;&#23454;&#38469;&#30340;&#30005;&#31163;&#23618;&#27169;&#22411;</span>
+
+TEC_initial=reshape(Ne2,L,1);<span class="comment">%&#21021;&#22987;&#20540; &#21021;&#22987;&#20272;&#35745;&#25152;&#26377;&#30005;&#23376;&#23494;&#24230;&#32593;&#26684;&#20998;&#24067;</span>
+X2=TEC_initial;
+</pre><h2>begin run<a name="2"></a></h2><pre class="codeinput">tic
+
+x=reshape(Ne22,L,1);  <span class="comment">%&#23454;&#38469;&#30005;&#23376;&#23494;&#24230;&#20998;&#24067;</span>
+
+
+load <span class="string">TEC_R.txt</span> <span class="comment">%&#26497;&#21270;SAR&#21453;&#28436;&#24471;&#21040;&#30340;TEC&#20540;</span>
+yyy=TEC_R;
+
+yyy=reshape(yyy,75,16);<span class="comment">% &#21355;&#26143;&#30340;&#32593;&#26684; 16&#20010;&#21488;&#31449; 75&#34920;&#31034;&#21355;&#26143;&#36712;&#36947; Azimuth Direcction&#36208;&#36807;&#30340;&#32593;&#26684;</span>
+yyy=yyy.';
+yyy=reshape(yyy,I,1);
+
+
+<span class="keyword">for</span> j=1:3  <span class="comment">%&#27809;&#35823;&#24046;10&#27425;&#36845;&#20195;&#65292;&#26377;&#35823;&#24046;3&#27425;&#36845;&#20195;</span>
+    <span class="keyword">for</span> i=1:I
+        cha2=yyy(i)/dot(X2,B(i,:));  <span class="comment">%y(i)&#19982;Y(i)&#20998;&#21035;&#26159;&#21033;&#29992;&#19977;&#39057;&#27861;&#19982;&#21452;&#39057;&#27861;&#27979;&#37327;&#21040;&#30340;TEC&#23454;&#38469;&#20540;&#65292;&#20854;&#20013;Y(i)&#26159;&#24102;&#26377;&#35823;&#24046;&#30340;</span>
+        mo=norm(B(i,:));
+        <span class="keyword">for</span> l=1:L
+            X2(l)=X2(l)*(cha2^(lmt*B(i,l)'/mo));
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    j
+<span class="keyword">end</span>
+
+X2=reshape(X2,40,52);   <span class="comment">%&#21453;&#28436;&#24471;&#21040;&#30340;&#30005;&#23376;&#23494;&#24230;&#20998;&#24067;</span>
+x=reshape(x,40,52);     <span class="comment">%%&#21152;&#19978;&#25200;&#21160;&#30340;&#23454;&#38469;&#30340;&#30005;&#31163;&#23618;&#27169;&#22411;</span>
+
+v=0:.12e11:1.56e11;
+Azi=0:0.0288*82.4891:1.5*82.4891-0.0288*82.4891;
+figure
+
+contourf(Azi(9:44)-Azi(9),205:5:400,x(:,9:44),v);
+h=colorbar;
+set(get(h,<span class="string">'title'</span>),<span class="string">'string'</span>);
+axis([0 80 205 400])
+xlabel(<span class="string">'Azimuth Direcction/km'</span>);
+ylabel(<span class="string">'Altitude/km'</span>);
+
+figure
+contourf(Azi(9:44)-Azi(9),205:5:400,X2(:,9:44),v);
+h=colorbar;
+set(get(h,<span class="string">'title'</span>),<span class="string">'string'</span>);
+axis([0 80 205 400])
+xlabel(<span class="string">'Azimuth Direcction/km'</span>);
+ylabel(<span class="string">'Altitude/km'</span>);
+
+save(<span class="string">'x.mat'</span>,<span class="string">'x'</span>);
+save(<span class="string">'X2.mat'</span>,<span class="string">'X2'</span>)
+toc
+</pre><pre class="codeoutput">
+j =
+
+     1
+
+
+j =
+
+     2
+
+
+j =
+
+     3
+
+     {}
+
+     {}
+
+Elapsed time is 47.378712 seconds.
+</pre><img vspace="5" hspace="5" src="ion_CT_2D_01.png" alt=""> <img vspace="5" hspace="5" src="ion_CT_2D_02.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% set up initial parameter
+clc
+clear all
+close all
+L=2080; %电子密度网格数量
+I=1200; %射线数量
+lmt=1;  %松弛因子
+
+
+
+load('xishu.mat');
+B=LMN;
+B=B*1000;  %公里
+load('Ne2.mat');% 电离层经验模型
+load('Ne22.mat');%加上扰动的实际的电离层模型
+
+TEC_initial=reshape(Ne2,L,1);%初始值 初始估计所有电子密度网格分布
+X2=TEC_initial;
+
+%% begin run
+tic
+
+x=reshape(Ne22,L,1);  %实际电子密度分布
+
+
+load TEC_R.txt %极化SAR反演得到的TEC值
+yyy=TEC_R;
+
+yyy=reshape(yyy,75,16);% 卫星的网格 16个台站 75表示卫星轨道 Azimuth Direcction走过的网格
+yyy=yyy.';
+yyy=reshape(yyy,I,1);
+
+
+for j=1:3  %没误差10次迭代，有误差3次迭代
+    for i=1:I
+        cha2=yyy(i)/dot(X2,B(i,:));  %y(i)与Y(i)分别是利用三频法与双频法测量到的TEC实际值，其中Y(i)是带有误差的
+        mo=norm(B(i,:));
+        for l=1:L
+            X2(l)=X2(l)*(cha2^(lmt*B(i,l)'/mo));
+        end
+    end
+    j
+end
+
+X2=reshape(X2,40,52);   %反演得到的电子密度分布
+x=reshape(x,40,52);     %%加上扰动的实际的电离层模型
+
+v=0:.12e11:1.56e11;
+Azi=0:0.0288*82.4891:1.5*82.4891-0.0288*82.4891;
+figure
+
+contourf(Azi(9:44)-Azi(9),205:5:400,x(:,9:44),v);
+h=colorbar;
+set(get(h,'title'),'string');
+axis([0 80 205 400])
+xlabel('Azimuth Direcction/km');
+ylabel('Altitude/km');
+
+figure
+contourf(Azi(9:44)-Azi(9),205:5:400,X2(:,9:44),v);
+h=colorbar;
+set(get(h,'title'),'string');
+axis([0 80 205 400])
+xlabel('Azimuth Direcction/km');
+ylabel('Altitude/km');
+
+save('x.mat','x');
+save('X2.mat','X2')
+toc
+##### SOURCE END #####
+--></body></html>

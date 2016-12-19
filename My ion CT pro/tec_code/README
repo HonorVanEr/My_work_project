@@ -1,0 +1,21 @@
+This directory contains all of the .m and .c files needed to run the main matlab program get_tec.m
+
+This directory also contains sample files:
+
+driver.template - program driver file
+nas01310.09o - rinex file
+CODG1310.09I - ionex file
+igs15311.sp3 - orbit file
+epgga9.131 - ephemerides file
+
+these will allow you to run the program for the settings in driver.template and output example TEC timeseries.
+
+get_tec.m outputs .mat files by receiver, satellite, or both (options in driver file).  Each .mat file is a 1x1 structure containing, for each satellite/receiver pair, a 13xN matrix whose contents are listed in the header of the get_tec.m program.
+
+To start, put all of the files contained in the .zip archive into a directory
+
+before you run get_tec you must compile readrinex.c in matlab: 'mex readrinex.c'
+
+to start the run, type (in matlab): get_tec('driver.template')
+
+futher details of the program can be found in tec_docu.pdf

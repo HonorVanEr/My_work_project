@@ -1,0 +1,380 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MART_coefficient_matrix</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-10-25"><meta name="DC.source" content="MART_coefficient_matrix.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">clc
+clear <span class="string">all</span>
+
+
+trace_number=1:1200;
+<span class="comment">%%satlliate parameters</span>
+G=6.67*10^(-12); <span class="comment">%&#19975;&#26377;&#24341;&#21147;&#24120;&#37327;</span>
+Mz=5.976*10^24;
+T=2*pi*(6871200^1.5)/(G*Mz)^0.5;<span class="comment">%&#21355;&#26143;&#36816;&#21160;&#21608;&#26399;&#24320;&#26222;&#21202;&#23450;&#24459;</span>
+f=1/T*360;               <span class="comment">%&#32463;&#24230;&#20449;&#24687;</span>
+sat=14:f:15.5;           <span class="comment">%&#26041;&#20301;&#35282;&#20449;&#24687; 75&#20010;&#20540;&#36208;&#36807;75&#20010;&#32593;&#26684;</span>
+Sat=sat*pi/180;
+Rs=6871.2;           <span class="comment">% &#65311;</span>
+
+
+rec=14.6:0.02:14.9; <span class="comment">%&#24067;&#20102;length(rec)&#20010;&#31449;</span>
+
+<span class="comment">%%receive  parameters81.7459</span>
+<span class="comment">% rec=[-5  -4 -3  -2 -1 0  1 2 3 4 5];</span>
+rec=sort(rec);
+Rec=rec*pi/180;  <span class="comment">%&#21464;&#25104;&#24359;&#24230;&#21046;</span>
+Rr=6371.2;
+
+<span class="comment">%%net paramters</span>
+dw=0.0288;               <span class="comment">%&#32593;&#26684;&#32463;&#24230;&#38388;&#38548;</span>
+Hight=(Rr+100):10:(Rr+500); <span class="comment">%&#32593;&#26684;&#30340;&#39640;&#24230;&#33539;&#22260;</span>
+Lat=14:dw:15.5;             <span class="comment">%&#32593;&#26684;&#30340;&#26041;&#20301;&#32593;&#26684;</span>
+M=length(rec)*length(Sat); <span class="comment">%&#23556;&#32447;&#25968;&#30446;</span>
+N=(length(Hight)-1)*(length(Lat)-1); <span class="comment">%&#32593;&#26684;&#25968;&#30446;</span>
+LMN=zeros(M,N);
+
+
+
+jm=1;
+<span class="keyword">for</span> i=1:length(sat);
+    <span class="keyword">for</span> j=1:length(rec);
+        R=[];
+        k=(Rs*sin(Sat(i))-Rr*sin(Rec(j)))/(Rs*cos(Sat(i))-Rr*cos(Rec(j)));<span class="comment">%&#26041;&#31243;&#26012;&#29575;</span>
+        radial=sqrt(Rs^2+Rr^2-2*Rs*Rr*cos(Sat(i)-Rec(j))); <span class="comment">%&#21355;&#26143;&#19982;&#21488;&#31449;&#36830;&#32447;&#36317;&#31163;</span>
+        alfa=acos((Rs^2+radial^2-Rr^2)/(2*Rs*radial));     <span class="comment">%&#21355;&#26143;&#19982;&#21488;&#31449;&#36830;&#32447;&#21644;&#21488;&#31449;&#22320;&#24515;&#36830;&#32447;&#22841;&#35282;</span>
+        <span class="comment">%&#21355;&#26143;&#22312;&#25509;&#25910;&#21488;&#31449;&#30340;&#21491;&#20391; &#25214;&#21040;&#20004;&#32773;&#20043;&#38388;&#26041;&#20301;&#26041;&#21521;&#30340;&#32593;&#26684;&#28857;&#20301;&#32622;</span>
+        <span class="comment">%&#25214;&#21040;&#21355;&#26143;&#31163;&#24471;&#26368;&#36817;&#24038;&#20391;&#30340;&#32593;&#26684;</span>
+        <span class="comment">%&#25214;&#21040;&#21488;&#31449;&#31163;&#24471;&#26368;&#36817;&#30340;&#21491;&#20391;&#30340;&#32593;&#26684;</span>
+        <span class="keyword">if</span> sat(i)&gt;=rec(j)
+            sita1=ceil(rec(j)/dw);
+            sita1=sita1*dw;
+            sita2=floor(sat(i)/dw);
+            sita2=sita2*dw;
+            sita=sita1:dw:sita2;
+            sita=sort(sita,<span class="string">'descend'</span>);
+            Sita=sita*pi/180;
+            Sita=sort(Sita,<span class="string">'descend'</span>);
+
+            <span class="comment">%&#35745;&#31639;&#22810;&#26465;&#23556;&#32447;&#26377;&#25928;&#30340;&#24452;&#21521;&#36317;&#31163;</span>
+            <span class="keyword">for</span> q=1:length(sita)
+                R(q)=(k*Rr*cos(Rec(j))-Rr*sin(Rec(j)))/(k*cos(Sita(q))-sin(Sita(q)));<span class="comment">%radial square</span>
+                R=R(R&gt;Hight(1));
+
+            <span class="keyword">end</span>
+
+            <span class="comment">%&#19981;&#21516;&#39640;&#24230;&#19978;&#30340;&#32593;&#26684;&#23545;&#24212;&#24471;&#26041;&#20301;&#35282; &#19981;&#22826;&#30830;&#23450;&#65311;</span>
+            <span class="keyword">for</span> r=1:length(Hight)
+                gama(r)=asin(sin(alfa)*Rs/Hight(r));
+                gama=gama*180/pi;
+                sitaz(r)=alfa*180/pi-gama(r)+sat(i);
+            <span class="keyword">end</span>
+            <span class="comment">%&#21355;&#26143;&#22312;&#25509;&#25910;&#21488;&#31449;&#30340;&#24038;&#20391;</span>
+            <span class="comment">%&#25214;&#21040;&#21355;&#26143;&#31163;&#24471;&#26368;&#36817;&#21491;&#20391;&#30340;&#32593;&#26684;</span>
+            <span class="comment">%&#25214;&#21040;&#21488;&#31449;&#31163;&#24471;&#26368;&#36817;&#30340;&#24038;&#20391;&#30340;&#32593;&#26684;</span>
+        <span class="keyword">else</span>
+            sita1=floor(rec(j)/dw);
+            sita1=sita1*dw;
+            sita2=ceil(sat(i)/dw);
+            sita2=sita2*dw;
+            sita=sita2:dw:sita1;
+            sita=sort(sita,<span class="string">'descend'</span>);
+            Sita=sita*pi/180;
+            Sita=sort(Sita,<span class="string">'descend'</span>);
+            <span class="comment">%&#35745;&#31639;&#22810;&#26465;&#23556;&#32447;&#26377;&#25928;&#30340;&#24452;&#21521;&#36317;&#31163;</span>
+
+            <span class="keyword">for</span> q=1:length(sita)
+                R(q)=(k*Rr*cos(Rec(j))-Rr*sin(Rec(j)))/(k*cos(Sita(q))-sin(Sita(q)));<span class="comment">%radial square</span>
+            <span class="keyword">end</span>
+            R=R(R&gt;Hight(1));
+
+
+            <span class="comment">%&#19981;&#21516;&#39640;&#24230;&#19978;&#30340;&#32593;&#26684;&#23545;&#24212;&#24471;&#26041;&#20301;&#35282; &#19981;&#22826;&#30830;&#23450;&#65311;</span>
+            <span class="keyword">for</span> r=1:length(Hight)
+                gama(r)=asin(sin(alfa)*Rs/Hight(r));
+                gama(r)=gama(r)*180/pi;
+                sitaz(r)=gama(r)-alfa*180/pi+sat(i);
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        sitau=union(sita,sitaz);
+        sitau=sort(sitau);
+
+        <span class="keyword">if</span> sat(i)&gt;=rec(j)
+            sitau=sitau(sitau&gt;=sitaz(1));
+        <span class="keyword">else</span>
+            sitau=sitau(sitau&lt;=sitaz(1));
+        <span class="keyword">end</span>
+        tmp=diff(sitau);
+        <span class="keyword">for</span> l=i:length(tmp)
+            <span class="keyword">if</span> tmp(l)&lt;1e-10
+                sitau(l)=[];
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+        <span class="keyword">if</span> sat(i)&gt;=rec(j)
+            sitau=sort(sitau) ;
+        <span class="keyword">else</span>
+            sitau=sort(sitau,<span class="string">'descend'</span>) ;
+        <span class="keyword">end</span>
+        Sitau=sitau*pi/180;
+        Ru=union(R,Hight);
+        Ru=sort(Ru);
+        <span class="keyword">for</span> t=1:length(Sitau)-1
+            L=(Ru(t+1)*sin(Sitau(t+1))-Ru(t)*sin(Sitau(t)))^2+(Ru(t+1)*cos(Sitau(t+1))-Ru(t)*cos(Sitau(t)))^2;
+            L=sqrt(L);
+            m=floor((Ru(t)-Hight(1))/10)+1;
+            tmp=(sitau(t)-Lat(1))/dw;
+            <span class="keyword">if</span> mod(tmp,1)==0
+                <span class="keyword">if</span> sat(i)&gt;=rec(j)
+                    n=floor((sitau(t)-Lat(1))/dw)+1;
+                <span class="keyword">else</span>
+                    n=floor((sitau(t)-Lat(1))/dw);
+                <span class="keyword">end</span>
+            <span class="keyword">else</span>
+                n=floor((sitau(t)-Lat(1))/dw)+1;
+            <span class="keyword">end</span>
+
+            jn=((n-1)*(length(Hight)-1)+m);
+            LMN(jm,jn)=L;<span class="comment">%&#31995;&#25968;&#30697;&#38453;</span>
+
+        <span class="keyword">end</span>
+        <span class="comment">%        &#36719;&#20214;&#27979;&#35797;&#65306;</span>
+        <span class="comment">%        tu=LMN(jm,:);</span>
+        <span class="comment">%        tu=reshape(tu,40,52);</span>
+        <span class="comment">%        spy(tu)</span>
+        jm=jm+1;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="comment">%tu=LMN(80,:);</span>
+<span class="comment">%tu=reshape(tu,40,52);</span>
+
+
+spy(reshape(LMN(trace_number(1),:),40,52));
+hold <span class="string">on</span>
+<span class="keyword">for</span> index=2:length(trace_number)
+spy(reshape(LMN(trace_number(index),:),40,52));
+<span class="keyword">end</span>
+hold <span class="string">off</span>
+
+save(<span class="string">'xishu.mat'</span>,<span class="string">'LMN'</span>);
+</pre><img vspace="5" hspace="5" src="MART_coefficient_matrix_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+clc
+clear all
+
+
+trace_number=1:1200;
+%%satlliate parameters
+G=6.67*10^(-12); %万有引力常量
+Mz=5.976*10^24;
+T=2*pi*(6871200^1.5)/(G*Mz)^0.5;%卫星运动周期开普勒定律
+f=1/T*360;               %经度信息
+sat=14:f:15.5;           %方位角信息 75个值走过75个网格
+Sat=sat*pi/180;
+Rs=6871.2;           % ？
+
+
+rec=14.6:0.02:14.9; %布了length(rec)个站
+
+%%receive  parameters81.7459
+% rec=[-5  -4 -3  -2 -1 0  1 2 3 4 5];
+rec=sort(rec);
+Rec=rec*pi/180;  %变成弧度制
+Rr=6371.2;
+
+%%net paramters
+dw=0.0288;               %网格经度间隔
+Hight=(Rr+100):10:(Rr+500); %网格的高度范围
+Lat=14:dw:15.5;             %网格的方位网格
+M=length(rec)*length(Sat); %射线数目
+N=(length(Hight)-1)*(length(Lat)-1); %网格数目
+LMN=zeros(M,N);
+
+
+
+jm=1;
+for i=1:length(sat);
+    for j=1:length(rec);
+        R=[];
+        k=(Rs*sin(Sat(i))-Rr*sin(Rec(j)))/(Rs*cos(Sat(i))-Rr*cos(Rec(j)));%方程斜率
+        radial=sqrt(Rs^2+Rr^2-2*Rs*Rr*cos(Sat(i)-Rec(j))); %卫星与台站连线距离
+        alfa=acos((Rs^2+radial^2-Rr^2)/(2*Rs*radial));     %卫星与台站连线和台站地心连线夹角
+        %卫星在接收台站的右侧 找到两者之间方位方向的网格点位置
+        %找到卫星离得最近左侧的网格
+        %找到台站离得最近的右侧的网格
+        if sat(i)>=rec(j)
+            sita1=ceil(rec(j)/dw);
+            sita1=sita1*dw;
+            sita2=floor(sat(i)/dw);
+            sita2=sita2*dw;
+            sita=sita1:dw:sita2;
+            sita=sort(sita,'descend');
+            Sita=sita*pi/180;
+            Sita=sort(Sita,'descend');
+            
+            %计算多条射线有效的径向距离
+            for q=1:length(sita)
+                R(q)=(k*Rr*cos(Rec(j))-Rr*sin(Rec(j)))/(k*cos(Sita(q))-sin(Sita(q)));%radial square
+                R=R(R>Hight(1));
+                
+            end
+            
+            %不同高度上的网格对应得方位角 不太确定？
+            for r=1:length(Hight)
+                gama(r)=asin(sin(alfa)*Rs/Hight(r));
+                gama=gama*180/pi;
+                sitaz(r)=alfa*180/pi-gama(r)+sat(i);
+            end
+            %卫星在接收台站的左侧
+            %找到卫星离得最近右侧的网格
+            %找到台站离得最近的左侧的网格
+        else
+            sita1=floor(rec(j)/dw);
+            sita1=sita1*dw;
+            sita2=ceil(sat(i)/dw);
+            sita2=sita2*dw;
+            sita=sita2:dw:sita1;
+            sita=sort(sita,'descend');
+            Sita=sita*pi/180;
+            Sita=sort(Sita,'descend');
+            %计算多条射线有效的径向距离
+            
+            for q=1:length(sita)
+                R(q)=(k*Rr*cos(Rec(j))-Rr*sin(Rec(j)))/(k*cos(Sita(q))-sin(Sita(q)));%radial square
+            end
+            R=R(R>Hight(1));
+            
+            
+            %不同高度上的网格对应得方位角 不太确定？
+            for r=1:length(Hight)
+                gama(r)=asin(sin(alfa)*Rs/Hight(r));
+                gama(r)=gama(r)*180/pi;
+                sitaz(r)=gama(r)-alfa*180/pi+sat(i);
+            end
+        end
+        sitau=union(sita,sitaz);
+        sitau=sort(sitau);
+        
+        if sat(i)>=rec(j)
+            sitau=sitau(sitau>=sitaz(1));
+        else
+            sitau=sitau(sitau<=sitaz(1));
+        end
+        tmp=diff(sitau);
+        for l=i:length(tmp)
+            if tmp(l)<1e-10
+                sitau(l)=[];
+            end
+        end
+        if sat(i)>=rec(j)
+            sitau=sort(sitau) ;
+        else
+            sitau=sort(sitau,'descend') ;
+        end
+        Sitau=sitau*pi/180;
+        Ru=union(R,Hight);
+        Ru=sort(Ru);
+        for t=1:length(Sitau)-1
+            L=(Ru(t+1)*sin(Sitau(t+1))-Ru(t)*sin(Sitau(t)))^2+(Ru(t+1)*cos(Sitau(t+1))-Ru(t)*cos(Sitau(t)))^2;
+            L=sqrt(L);
+            m=floor((Ru(t)-Hight(1))/10)+1;
+            tmp=(sitau(t)-Lat(1))/dw;
+            if mod(tmp,1)==0
+                if sat(i)>=rec(j)
+                    n=floor((sitau(t)-Lat(1))/dw)+1;
+                else
+                    n=floor((sitau(t)-Lat(1))/dw);
+                end
+            else
+                n=floor((sitau(t)-Lat(1))/dw)+1;
+            end
+            
+            jn=((n-1)*(length(Hight)-1)+m);
+            LMN(jm,jn)=L;%系数矩阵
+            
+        end
+        %        软件测试：
+        %        tu=LMN(jm,:);
+        %        tu=reshape(tu,40,52);
+        %        spy(tu)
+        jm=jm+1;
+    end
+end
+%tu=LMN(80,:);
+%tu=reshape(tu,40,52);
+
+
+spy(reshape(LMN(trace_number(1),:),40,52));
+hold on 
+for index=2:length(trace_number)
+spy(reshape(LMN(trace_number(index),:),40,52));
+end
+hold off
+
+save('xishu.mat','LMN');
+
+
+##### SOURCE END #####
+--></body></html>

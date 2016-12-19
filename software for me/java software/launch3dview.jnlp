@@ -1,0 +1,98 @@
+<jnlp spec="6.0+" codebase="http://3dview.irap.omp.eu:80/client3d/" version="1.11">
+<information>
+<title>3DView CDPP 3dview.irap.omp.eu</title>
+<vendor>GFI Toulouse for IRAP</vendor>
+<icon href="http://3dview.irap.omp.eu:80/images/ipx_3dv_48.png" width="48" height="48"/>
+<icon kind="shortcut" href="http://3dview.irap.omp.eu:80/images/ipx_3dv_48.png" width="48" height="48"/>
+<icon kind="shortcut" href="http://3dview.irap.omp.eu:80/images/ipx_3dv_32.png" width="32" height="32"/>
+<icon kind="shortcut" href="http://3dview.irap.omp.eu:80/images/ipx_3dv_16.png" width="16" height="16"/>
+<icon kind="splash" href="http://3dview.irap.omp.eu:80/images/logo3dview_big.png"  height="495" width="1148"/>
+<offline-allowed/>
+<shortcut online="false" install="false">
+<desktop/>
+<menu submenu="3DView"/>
+</shortcut>
+</information>
+<security>
+<all-permissions/>
+</security>
+<update check="always" policy="always"/>
+<resources>
+<property name="java.ext.dirs" value=""/>
+<jar href="cdpp3dview-s.jar" part="m3dv" download="eager" main="true"/>
+<jar href="jfreechart-s.jar" part="jfc" download="eager"/>
+<jar href="jcommon-s.jar" part="jcom" download="eager"/>
+<jar href="jmfAll-s.jar" part="jmf" download="eager"/>
+<jar href="ncCore-s.jar" part="netcdf" download="eager"/>
+<jar href="commonsio-s.jar" part="cio" download="eager"/>
+<jar href="jsamp-s.jar" part="samp" download="eager"/>
+<jar href="java3dlbe-s.jar" part="j3d" download="eager"/>
+<jar href="vecmath-s.jar" part="sgp4" download="eager"/>
+<jar href="sgp4-s.jar" part="sgp4" download="eager"/>
+<jar href="cdasWebServices-client-s.jar" part="cdaweb" download="eager"/>
+<jar href="jaxrpc-impl-s.jar" part="cdaweb" download="eager"/>
+<jar href="jaxrpc-spi-s.jar" part="cdaweb" download="eager"/>
+<jar href="jaxrpc-api-s.jar" part="cdaweb" download="eager"/>
+<jar href="jaxrpc-s.jar" part="cdaweb" download="eager"/>
+<jar href="mail-s.jar" part="cdaweb" download="eager"/>
+<jar href="jax-qname-s.jar" part="cdaweb" download="eager"/>
+<jar href="jsr173_api-s.jar" part="cdaweb" download="eager"/>
+<jar href="FastInfoset-s.jar" part="cdaweb" download="eager"/>
+<jar href="jaxp-api-s.jar" part="cdaweb" download="eager"/>
+<jar href="saaj-api-s.jar" part="cdaweb" download="eager"/>
+<jar href="relaxngDatatype-s.jar" part="cdaweb" download="eager"/>
+<jar href="xsdlib-s.jar" part="cdaweb" download="eager"/>
+<jar href="saaj-impl-s.jar" part="cdaweb" download="eager"/>
+<jar href="okhttp-3.2.0-s.jar" part="csa" download="eager"/>
+<jar href="okio-1.7.0-s.jar" part="csa" download="eager"/>
+<jar href="jogl/gluegen-s.jar" part="jogl" download="eager"/>
+<jar href="jogl/gluegen-rt-s.jar" part="jogl" download="eager"/>
+<jar href="jogl/jogl-all-s.jar" part="jogl" download="eager"/>
+<j2se version="1.7+" max-heap-size="800m"/>
+<property name="jnlp.sun.java2d.noddraw" value="true"/>
+<property name="jnlp.sun.java2d.d3d" value="false"/>
+<property name="jnlp.sun.java2d.opengl" value="false"/>
+<property name="swing.defaultlaf" value="javax.swing.plaf.nimbus.NimbusLookAndFeel"/>
+<property name="jnlp.textures.base.url" value="http://3dview.irap.omp.eu:80/images/textures"/>
+<property name="jnlp.models.base.url" value="http://3dview.irap.omp.eu:80/models"/>
+<property name="jnlp.wsdl.url" value="http://3dview.irap.omp.eu:80/CdppServices?wsdl"/>
+<property name="jnlp.server.base.url" value="http://3dview.irap.omp.eu:80"/>
+    <property name="apple.laf.useScreenMenuBar" value="true"/>
+    <property name="apple.awt.graphics.UseQuartz" value="true"/>
+</resources>
+<resources os="Windows" arch="x86">
+    <nativelib href="jogl/gluegen-rt-natives-windows-i586-s.jar" part="jogl"/>
+    <nativelib href="jogl/jogl-all-natives-windows-i586-s.jar" part="jogl"/>
+</resources>
+<resources os="Windows" arch="amd64">
+    <nativelib href="jogl/gluegen-rt-natives-windows-amd64-s.jar" part="jogl"/>
+    <nativelib href="jogl/jogl-all-natives-windows-amd64-s.jar" part="jogl"/>
+</resources>
+<resources os="Windows" arch="x86_64">
+    <nativelib href="jogl/gluegen-rt-natives-windows-amd64-s.jar" part="jogl"/>
+    <nativelib href="jogl/jogl-all-natives-windows-amd64-s.jar" part="jogl"/>
+</resources>
+<resources os="Linux" arch="i386" >
+<nativelib href="jogl/jogl-all-natives-linux-i586-s.jar" part="jogl"/>
+<nativelib href="jogl/gluegen-rt-natives-linux-i586-s.jar" part="jogl"/>
+</resources>
+<resources os="Linux" arch="x86" >
+<nativelib href="jogl/jogl-all-natives-linux-i586-s.jar" part="jogl"/>
+<nativelib href="jogl/gluegen-rt-natives-linux-i586-s.jar" part="jogl"/>
+</resources>
+<resources os="Linux" arch="amd64" >
+<nativelib href="jogl/jogl-all-natives-linux-amd64-s.jar" part="jogl"/>
+<nativelib href="jogl/gluegen-rt-natives-linux-amd64-s.jar" part="jogl"/>
+</resources>
+<resources os="Linux" arch="x86_64" >
+<nativelib href="jogl/jogl-all-natives-linux-amd64-s.jar" part="jogl"/>
+<nativelib href="jogl/gluegen-rt-natives-linux-amd64-s.jar" part="jogl"/>
+</resources>
+<resources os="Mac OS X">
+    <nativelib href="jogl/jogl-all-natives-macosx-universal-s.jar" part="jogl"/>
+    <nativelib href="jogl/gluegen-rt-natives-macosx-universal-s.jar" part="jogl"/>
+</resources>
+<application-desc main-class="gfi.tls.mm3dview.component.commonmenu.JMulti3DViewControler">
+<argument>NotFirstUIActionOnProcess</argument>
+</application-desc>
+</jnlp>
