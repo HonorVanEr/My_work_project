@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" codebase="http://storms-tools.irap.omp.eu/PropagationTool/deploy" href="PropagationTool.jnlp">
+  <information>
+    <title>PropagationTool Client</title>
+    <vendor>Unknown vendor</vendor>
+    <description>Propagation web tool</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.7+" java-vm-args="-Xms512m -Xmx1024m "  href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="PropagationTool.jar" size="1042716" download="eager" />
+    <jar href="amda-3.0.0.jar" size="30426" download="eager" />
+    <jar href="asm-3.3.1.jar" size="43581" download="eager" />
+    <jar href="before-client-3.0.0.jar" size="3021852" download="eager" />
+    <jar href="calendar-3.0.0.jar" size="51466" download="eager" />
+    <jar href="cglib-2.2.2.jar" size="287192" download="eager" />
+    <jar href="common-3.0.0.jar" size="34190" download="eager" />
+    <jar href="commons-exec-1.1.jar" size="52543" download="eager" />
+    <jar href="javafx-2.2.jar" size="15148476" download="eager" />
+    <jar href="jsamp-1.3-2.jar" size="707990" download="eager" />
+    <jar href="log4j-1.2.14.jar" size="367444" download="eager" />
+    <jar href="slf4j-api-1.5.6.jar" size="22338" download="eager" />
+    <jar href="slf4j-log4j12-1.5.6.jar" size="9678" download="eager" />
+  </resources>
+<security>
+  <all-permissions/>
+</security>
+  <applet-desc  width="1230" height="765" main-class="com.javafx.main.NoJavaFXFallback"  name="PropagationTool Client" >
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="1230" height="765" main-class="fr.tlse.irap.EntryApp"  name="PropagationTool Client" >
+    <fx:argument>http://storms-tools.irap.omp.eu</fx:argument>
+    <fx:argument>PropagationTool</fx:argument>
+  </jfx:javafx-desc>
+  <update check="always"/>
+</jnlp>

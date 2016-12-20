@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" codebase="http://storms-tools.irap.omp.eu/SpaceWeather/deploy" href="SpaceWeather.jnlp">
+  <information>
+    <title>SpaceWeather Client</title>
+    <vendor>Unknown vendor</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.7+" java-vm-args="-Xms512m -Xmx1024m "  href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="SpaceWeather.jar" size="2007321" download="eager" />
+    <jar href="asm-3.3.1.jar" size="43581" download="eager" />
+    <jar href="cglib-2.2.2.jar" size="287192" download="eager" />
+    <jar href="gluegen-rt-7.8.9.jar" size="288276" download="eager" />
+    <jar href="j3dcore-1.6.0.jar" size="2834837" download="eager" />
+    <jar href="j3dutils-1.6.0.jar" size="1669798" download="eager" />
+    <jar href="javafx-2.2.jar" size="15148476" download="eager" />
+    <jar href="jogl-all-1.2.53.jar" size="3090347" download="eager" />
+    <jar href="log4j-1.2.14.jar" size="367444" download="eager" />
+    <jar href="slf4j-api-1.5.6.jar" size="22338" download="eager" />
+    <jar href="slf4j-log4j12-1.5.6.jar" size="9678" download="eager" />
+    <jar href="sw_before-client-1.0.0.jar" size="3021872" download="eager" />
+    <jar href="sw_calendar-1.0.0.jar" size="51547" download="eager" />
+    <jar href="sw_common-1.0.0.jar" size="51359" download="eager" />
+    <jar href="vecmath-1.6.0.jar" size="313689" download="eager" />
+  </resources>
+  <resources os="Windows" arch="x86">
+	<nativelib href="jogl/gluegen-rt-natives-windows-i586.jar"/>
+	<nativelib href="jogl/jogl-all-natives-windows-i586.jar"/>
+  </resources>
+  <resources os="Windows" arch="amd64">
+	<nativelib href="jogl/gluegen-rt-natives-windows-amd64.jar"/>
+    <nativelib href="jogl/jogl-all-natives-windows-amd64.jar"/>
+  </resources>
+  <resources os="Linux" arch="i386">
+	<nativelib href="jogl/gluegen-rt-natives-linux-i586.jar"/>
+	<nativelib href="jogl/jogl-all-natives-linux-i586.jar"/>
+  </resources>
+  <resources os="Linux" arch="x86">
+	<nativelib href="jogl/gluegen-rt-natives-linux-i586.jar"/>
+	<nativelib href="jogl/jogl-all-natives-linux-i586.jar"/>
+  </resources>
+  <resources os="Linux" arch="amd64">
+	<nativelib href="jogl/gluegen-rt-natives-linux-amd64.jar"/>
+	<nativelib href="jogl/jogl-all-natives-linux-amd64.jar"/>
+  </resources>
+  <resources os="Linux" arch="x86_64">
+	<nativelib href="jogl/gluegen-rt-natives-linux-amd64.jar"/>
+	<nativelib href="jogl/jogl-all-natives-linux-amd64.jar"/>
+  </resources>
+  <resources os="Mac OS X" arch="ppc">
+	<nativelib href="jogl/gluegen-rt-natives-macosx-universal.jar"/>
+	<nativelib href="jogl/jogl-all-natives-macosx-universal.jar"/>
+  </resources>
+  <resources os="Mac OS X" arch="i386">
+	<nativelib href="jogl/gluegen-rt-natives-macosx-universal.jar"/>
+	<nativelib href="jogl/jogl-all-natives-macosx-universal.jar"/>	
+  </resources>
+  <resources os="Mac OS X" arch="x86_64">
+	<nativelib href="jogl/gluegen-rt-natives-macosx-universal.jar"/>
+	<nativelib href="jogl/jogl-all-natives-macosx-universal.jar"/>	
+  </resources>
+
+<security>
+  <all-permissions/>
+</security>
+  <applet-desc  width="1230" height="765" main-class="com.javafx.main.NoJavaFXFallback"  name="SpaceWeather Client" >
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="1230" height="765" main-class="fr.tlse.irap.EntryApp"  name="SpaceWeather Client" >
+    <fx:argument>http://storms-tools.irap.omp.eu</fx:argument>
+    <fx:argument>SpaceWeather</fx:argument>
+  </jfx:javafx-desc>
+  <update check="always"/>
+</jnlp>
