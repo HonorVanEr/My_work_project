@@ -6,6 +6,7 @@ Contents:
 
 
 1. My ion CT pro
+
    3D_CT_project:三维网格交点及射线追踪
    
    ComputerizedTomography-master:层析成像算法
@@ -21,4 +22,21 @@ Contents:
    iri:电离层模型
    
    tec_code:GPS TEC代码
+ 
+2. 常用配置notes
+   Mac_linux_window环境变量设置.docx
+   
+   Safari 书签.html
+   
+3. software for me
+
+   java software:
+   csa.jnlp  launch3dview.jnlp geotail.jnlp SpaceWeather.jnlp PropagationTool.jnlp   
+   
+4. jian_matlab_lib
    
+    m_map:
+    
+    GEOPACK:
+    
+    Geocentric coordinate_HapgoodRotations:
