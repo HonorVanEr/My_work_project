@@ -34,9 +34,11 @@ Contents:
    csa.jnlp  launch3dview.jnlp geotail.jnlp SpaceWeather.jnlp PropagationTool.jnlp   
    
 4. jian_matlab_lib
-   
-    m_map:
     
-    GEOPACK:
+    m_map: mapping toolbox 
+          Contents.m-   包含的内容
+          m_demo.m-     测试demo
     
-    Geocentric coordinate_HapgoodRotations:
+    GEOPACK: geopack from xiao
+    
+    Geocentric coordinate_HapgoodRotations: Rotations from one Geocentric coordinate system to another. (MatLab)

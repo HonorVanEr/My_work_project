@@ -23,7 +23,7 @@
 %--------------------------------------------------------------------------
 function [] = test_Hapgood()
     % Files with test vectors and IGRF coefficients
-    root      = '/Users/argall/Documents/MATLAB/HapgoodRotations/';
+    root      = '';
     test_file = fullfile(root, 'test_vectors.dat');
     igrf_file = fullfile(root, 'igrf_coeffs.txt');
 
