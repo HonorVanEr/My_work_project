@@ -47,3 +47,7 @@ Contents:
     
     eqn_master:地面台站数据处理 International Monitor for Auroral Geomagnetic Effects
                35 magnetometer stations
+               
+               UniGUI: Params = eqn_paramLoader('config.txt');缺少config.txt
+               
+               Diff-Coeffs-master:得到平均的小波变换power用来计算扩散系数

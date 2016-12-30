@@ -1,2 +1,4 @@
-addpath('eqn_master');
-addpath(genpath('eqn_master/.'));
+
+workpath=pwd;
+%addpath(workpath);
+addpath(genpath(workpath+filesep+'.'));
