@@ -43,9 +43,9 @@ Contents:
     
     Geocentric coordinate_HapgoodRotations: Rotations from one Geocentric coordinate system to another. (MatLab)
     
-    Mrx_GUI:小波变换一些数据处理
+    Mrx_GUI: 小波变换一些数据处理
     
-    eqn_master:地面台站数据处理 International Monitor for Auroral Geomagnetic Effects
+    eqn_master: 地面台站数据处理 International Monitor for Auroral Geomagnetic Effects
                35 magnetometer stations
                
                UniGUI: Params = eqn_paramLoader('config.txt');缺少config.txt
