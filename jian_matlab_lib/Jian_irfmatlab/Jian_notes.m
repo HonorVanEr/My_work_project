@@ -32,6 +32,7 @@ tint=irf.tint('2001-07-31T20:14:17.499996Z/2001-07-31T20:16:17.499996Z'); % time
 ok=local.c_read('test');
 local.c_update
 local.c_read('list');
+cd ../../..
 
 
 %% load pos
@@ -46,9 +47,9 @@ eField = Jian.get_3d_e_field(tint,scInd);
 Jian.plot_3d_e_field(eField);
 
 %% load cisMom C?_CP_CIS_HIA_ONBOARD_MOMENTS
-
-
-
+[hia_moments] = Jian.get_hia_moments(tint,scInd);
+hia_moments = Jian.PLOT_hia_moments(hia_moments);
+     
 %% load cis HIA PSD C?_CP_CIS-HIA_HS_MAG_IONS_PSD
 % returns some parameters as given by the CIS-HIA team.
 [th,phi,etab] = Jian.get_hia_values('all','full');
@@ -97,6 +98,7 @@ end
 Jian.hodo_gui(bField,1)
 
 %% 1D test patrticle simulation
+runTime=20;
 
 [vel,xMin,Y] = Jian.lorentz_1d(eF,bF,v0,runTime)
 

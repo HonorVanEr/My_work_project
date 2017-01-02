@@ -14,6 +14,7 @@
 %   fix_x_label         - Tweaks axes to properly display x-label.
 %   get_3d_b_field      - Returns 3D FGM data in GSE.
 %   get_3d_e_field      - Returns 3D EFW data in ISR2.
+%   get_hia_moments     - Returns hia moments gse.
 %   get_c_pos           - Returns the position of all Cluster satellites
 %   get_cluster_colors  - Get line colors for the Cluster satellites
 %   get_comb_spin       - Combines ion data from two spins
@@ -36,6 +37,7 @@
 %   lorentz_1d          - Performs a 1D test patrticle simulation
 %   plot_3d_b_field     - Plot 3D FGM data in GSE.
 %   plot_3d_e_field     - Plot 3D EFW data in ISR2.
+%   PLOT_hia_moments    - Plot hiamoments data in GSE.
 %   plot_hia_subspin    - Plots data from HIA in phase space density [s^3km^-6].
 %   plot_sim_vel        - Plots final velocity vs initial velocity
 %   print_fig           - Exports figure to file.
