@@ -32,22 +32,9 @@ Contents:
 
    java software:
    csa.jnlp  launch3dview.jnlp geotail.jnlp SpaceWeather.jnlp PropagationTool.jnlp   
-   
-4. jian_matlab_lib
+
+4. Automator project
     
-    m_map: mapping toolbox 
-          Contents.m-   包含的内容
-          m_demo.m-     测试demo
-    
-    GEOPACK: geopack from xiao
-    
-    Geocentric coordinate_HapgoodRotations: Rotations from one Geocentric coordinate system to another. (MatLab)
-    
-    Mrx_GUI: 小波变换一些数据处理
-    
-    eqn_master: 地面台站数据处理 International Monitor for Auroral Geomagnetic Effects
-               35 magnetometer stations
-               
-               UniGUI: Params = eqn_paramLoader('config.txt');缺少config.txt
-               
-               Diff-Coeffs-master:得到平均的小波变换power用来计算扩散系数
+    一些文件重命名、多个图片生成PDF、多个PDF合并成单个、批量文件加后缀、
+    批量文件连续重命名、批量PPT生成pdf、批量word生成PDF、退出所有程序、
+    Make PDF 多个照片合成PDF

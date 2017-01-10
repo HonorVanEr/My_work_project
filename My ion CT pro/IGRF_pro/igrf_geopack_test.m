@@ -1,5 +1,7 @@
-%%
-addpath('/Users/yangjian/Documents/MYgithub/My_work_project/jian_matlab_lib/GEOPACK');
+%% 用的都是地心坐标系
+
+
+addpath('/Users/yangjian/Documents/MYgithub/My_matlab_pro/jian_matlab_lib/GEOPACK');
 clc;
 clear all;
 
