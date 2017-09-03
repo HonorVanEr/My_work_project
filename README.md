@@ -24,9 +24,9 @@ Contents:
    tec_code:GPS TEC代码
  
 2. 常用配置notes
-   Mac_linux_window环境变量设置.docx
-   
-   Safari 书签.html
+   Mac_linux_window环境变量设置.docx Mac环境变量list.txt pip_install_LIST mac地址
+      
+   Safari 书签.html   bash_profile.txt
    
 3. software for me
 

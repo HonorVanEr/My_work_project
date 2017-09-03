@@ -1,4 +1,4 @@
-%% 用的都是地心坐标系
+%% 用的都是地心坐标系 不太精确
 
 
 addpath('/Users/yangjian/Documents/MYgithub/My_matlab_pro/jian_matlab_lib/GEOPACK');
@@ -9,7 +9,7 @@ GEOPACK_RECALC(2007,198,6,30,0);
 
 Re=6371.2; %km
 hight=205:5:400;
-R=1+hight/Re;
+R=(Re+hight)/Re;
 THETA=zeros(1,length(R));
 THETA(:)=42.17; % Geodetic latitudes in degrees.
 
@@ -20,7 +20,6 @@ PHI(:)= 128; % Geodetic longitudes in degrees.
 %角度转弧度制
 THETA=THETA*pi/180.0;
 PHI=PHI*pi/180.0;
-
 
 %%
 

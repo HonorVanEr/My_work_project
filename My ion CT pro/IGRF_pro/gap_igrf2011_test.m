@@ -1,4 +1,5 @@
 %% Test gap_igrf2011
+cd /Users/yangjian/Documents/MYgithub/Matlab_Geospace_Analysis_Package/gap/gap_library/gap_igrf2011/
 gh_coeffs = gap_prepare_igrf();
 
 

@@ -14,7 +14,7 @@ Zgrid_Min = min(Zg);
 Zgrid_Max = max(Zg);
 
 % define rays
-Nrays = 6;
+Nrays = 4;
 Ray_Ind = 1:Nrays;
 
 % Define 3 dimensional rays

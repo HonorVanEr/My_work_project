@@ -30,17 +30,25 @@ yyy=reshape(yyy,75,16);% 卫星的网格 16个台站 75表示卫星轨道 Azimuth Direcction走
 yyy=yyy.';
 yyy=reshape(yyy,I,1);
 
+% 
+% for j=1:3  %没误差10次迭代，有误差3次迭代
+%     for i=1:I
+%         cha2=yyy(i)/dot(X2,B(i,:));  %y(i)与Y(i)分别是利用三频法与双频法测量到的TEC实际值，其中Y(i)是带有误差的
+%         mo=norm(B(i,:));
+%         for l=1:L
+%             X2(l)=X2(l)*(cha2^(lmt*B(i,l)'/mo));
+%         end
+%     end
+%     j
+% end
 
-for j=1:3  %没误差10次迭代，有误差3次迭代
-    for i=1:I
-        cha2=yyy(i)/dot(X2,B(i,:));  %y(i)与Y(i)分别是利用三频法与双频法测量到的TEC实际值，其中Y(i)是带有误差的
-        mo=norm(B(i,:));
-        for l=1:L
-            X2(l)=X2(l)*(cha2^(lmt*B(i,l)'/mo));
-        end
-    end
-    j
-end
+
+iterations=3;  %迭代次数
+%
+relax=1;  %松弛因子
+X2= mart(yyy,B,X2,relax,iterations);
+
+
 
 X2=reshape(X2,40,52);   %反演得到的电子密度分布
 x=reshape(x,40,52);     %%加上扰动的实际的电离层模型
@@ -49,7 +57,9 @@ v=0:.12e11:1.56e11;
 Azi=0:0.0288*82.4891:1.5*82.4891-0.0288*82.4891;
 figure
 
-contourf(Azi(9:44)-Azi(9),205:5:400,x(:,9:44),v);
+contourf(Azi(9:44)-Azi(9),205:5:400,x(:,9:44));
+
+% contourf(Azi(9:44)-Azi(9),205:5:400,x(:,9:44),v);
 h=colorbar;
 set(get(h,'title'),'string');
 axis([0 80 205 400])
