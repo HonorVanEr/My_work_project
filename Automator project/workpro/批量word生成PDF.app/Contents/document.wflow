@@ -105,7 +105,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>359.500000:472.000000</string>
+				<string>359.500000:539.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/zh_CN.lproj/main.nib</string>
 			</dict>
@@ -207,7 +207,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>359.500000:234.000000</string>
+				<string>359.500000:301.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/zh_CN.lproj/main.nib</string>
 			</dict>
@@ -300,8 +300,6 @@ end run</string>
 				</array>
 				<key>OutputUUID</key>
 				<string>29DDB643-AC4A-49A2-8E1F-91FBD3E06FC4</string>
-				<key>StartAction</key>
-				<false/>
 				<key>UUID</key>
 				<string>9BD4896B-3CF6-492D-A0BD-426F85205F3B</string>
 				<key>UnlocalizedApplications</key>
@@ -377,14 +375,14 @@ end run</string>
 					</dict>
 				</dict>
 				<key>isViewVisible</key>
-				<false/>
+				<true/>
 				<key>location</key>
-				<string>359.500000:192.000000</string>
+				<string>359.500000:259.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/zh_CN.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -463,8 +461,6 @@ end run</string>
 				<string>35FA346B-5D1F-4D7F-B656-AD904C286F59</string>
 				<key>ShowWhenRun</key>
 				<true/>
-				<key>StartAction</key>
-				<false/>
 				<key>UUID</key>
 				<string>75180100-9848-45E9-9417-6AEE1614A006</string>
 				<key>UnlocalizedApplications</key>
@@ -503,7 +499,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>359.500000:150.000000</string>
+				<string>359.500000:62.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Move Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -513,26 +509,26 @@ end run</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>0A8651EC-3DCE-4220-A3D4-570237A4A860</key>
+		<key>024A78CF-9DC4-4FD9-A491-9DA443A3AF8F</key>
 		<dict>
 			<key>from</key>
-			<string>9BD4896B-3CF6-492D-A0BD-426F85205F3B - 9BD4896B-3CF6-492D-A0BD-426F85205F3B</string>
+			<string>388CFB6E-76B6-4608-A709-76E3ABDB554A - 388CFB6E-76B6-4608-A709-76E3ABDB554A</string>
 			<key>to</key>
-			<string>75180100-9848-45E9-9417-6AEE1614A006 - 75180100-9848-45E9-9417-6AEE1614A006</string>
+			<string>9BD4896B-3CF6-492D-A0BD-426F85205F3B - 9BD4896B-3CF6-492D-A0BD-426F85205F3B</string>
 		</dict>
-		<key>CBFD2019-79A9-4BFF-9193-4D4AB3DC6A83</key>
+		<key>4BE120FF-B6E1-4517-B4EF-E1A204FF581F</key>
 		<dict>
 			<key>from</key>
 			<string>1F6C2C3C-08E1-4219-A604-19F379F74BA8 - 1F6C2C3C-08E1-4219-A604-19F379F74BA8</string>
 			<key>to</key>
 			<string>388CFB6E-76B6-4608-A709-76E3ABDB554A - 388CFB6E-76B6-4608-A709-76E3ABDB554A</string>
 		</dict>
-		<key>DA68AABC-B4FB-42DC-A211-039607EE746E</key>
+		<key>8B4B7EAF-154D-4C71-BECC-5D76BD9FCF16</key>
 		<dict>
 			<key>from</key>
-			<string>388CFB6E-76B6-4608-A709-76E3ABDB554A - 388CFB6E-76B6-4608-A709-76E3ABDB554A</string>
-			<key>to</key>
 			<string>9BD4896B-3CF6-492D-A0BD-426F85205F3B - 9BD4896B-3CF6-492D-A0BD-426F85205F3B</string>
+			<key>to</key>
+			<string>75180100-9848-45E9-9417-6AEE1614A006 - 75180100-9848-45E9-9417-6AEE1614A006</string>
 		</dict>
 	</dict>
 	<key>variables</key>

@@ -162,7 +162,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>335.000000:497.000000</string>
+				<string>359.500000:497.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -284,7 +284,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>335.000000:342.000000</string>
+				<string>359.500000:342.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Copy Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -758,7 +758,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>335.000000:239.000000</string>
+				<string>359.500000:239.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Rename Finder Items.action/Contents/Resources/zh_CN.lproj/main.nib</string>
 			</dict>
@@ -768,14 +768,14 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>062D21EE-29D5-4D81-8345-6FC1030CF53E</key>
+		<key>320E026A-4A6E-43B8-8C4E-02FF77620EC6</key>
 		<dict>
 			<key>from</key>
 			<string>D972AA82-2E5C-4163-95F8-288AFA34780E - D972AA82-2E5C-4163-95F8-288AFA34780E</string>
 			<key>to</key>
 			<string>CBCB98E5-FD25-44D0-8301-6877222E7036 - CBCB98E5-FD25-44D0-8301-6877222E7036</string>
 		</dict>
-		<key>935D632B-BD53-4486-9455-963D2DAB15DE</key>
+		<key>9389D1C8-AB6A-46C1-B8EE-902E79F1523C</key>
 		<dict>
 			<key>from</key>
 			<string>CB385B08-4F65-4AD5-A0F9-D0DEEE673561 - CB385B08-4F65-4AD5-A0F9-D0DEEE673561</string>
